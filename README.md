@@ -14,6 +14,8 @@ Low-level objects that the user is likely to directly interface with. Each of th
 | Object | Description |
 | --- | --- |
 | [CompWindow](CompWindow) | Data structure for facilitating raster neighborhood operations. |
+| Dataset | Data structure for managing related collections of rasters, objects, and graphs. That code is not represented in this repository. |
+| Environment | Container for basic information for managing a program environment. This is still under development. |
 | [Graph](Graph) | Data structure for handling relationships between objects within one set of IDs. May be directed or undirected, and may be a multigraph. |
 | [GridCell](GridCell) | Simple data structure containing a row, column, and band number, to facilitate communication of grid coordinates. |
 | [Object](Object) | Geographic object with a location, extent, and set of properties. |
@@ -29,8 +31,22 @@ Objects that the user is ***NOT*** likely to directly interface with. Each of th
 | [FileInfo](FileInfo) | Data structure for holding and managing file information for raster data. |
 | [GeogInfo](GeogInfo) | Data structure for holding and managing geographic information for raster data. |
 | [GridBlock](GridBlock) | Data structure for holding and managing blocks of data from raster data files. |
+| MIPElem | Filter-element to facilitate morphological image processing (erode, dilate, open, close). |
 
-I will make operation libraries available as I become comfortable sharing them.
+Operation libraries are not yet available. However, I can list some headers....
+
+| Operations Library | Description |
+| --- | --- |
+| Dataset_ops | Functions for exploring data facilitated by the combination of raster, object, and graph structures, such as connectivity and path analysis. |
+| flux | Program for computing saturated flux from wind data. |
+| kmeans | Functions for computing k-means clusters. |
+| ObjectOps | Functions for facilitating analysis of objects, including navigating sorted object vectors, aggregating statistics on groups of objects, sampling objects, and comparing pairs or groups of objects (e.g., at their boundaries). |
+| RasterOps | Functions for the general interaction and manipulation of rasters, including optimizing raster grid blocks, getting grid cell neighborhoods, converting rasters to other data types, clipping rasters, path-tracing, and map algebra operations. |
+| RasterOps_objs | Functions for managing the interaction between rasters and objects, including clumping, getting objects from rasters, writing object properties to rasters, and identifying object neighborhoods based on object-ID rasters. |
+| RasterOps_topo | Functions for transforming and interpretic geomorphometric parameters based on DEMs, include hillslope (cos *i*), slope, azimuth, curvature, surface roughness, topographic exposure, viewshed, and watershed operations. |
+| RasterOps_topoobjs | As RasterOps_topo, but using objects to facilitate scale-adaptive characterization of land-surface variation. |
+
+Most of these operations are represented in my simple command line bygis program.
 
 ## Objects
 
