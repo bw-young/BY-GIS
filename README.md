@@ -365,6 +365,36 @@ bool isNbr (const GridCell& cell) const;                            // return tr
 
 ### Object
 
+Geographic object, represented with a position, an extent, and a set of properties. The exact extents of objects are represented with an external raster or polygon object.
+
+```C++
+// public members
+int id;     // object identifier.
+double x;   // centroid x-position.
+double y;   // centroid y-position.
+double z;   // centroid z-position.
+Extent ext; // object's Extent object.
+
+// constructors
+Object (int i=0, double X=0, double Y=0, double Z=0, const Extent& ex=Extent()); // construct a new object with ID=i, centroid coordinates=(x,y,z), and the given extent.
+Object (int, const Extent&); // construct a new object with ID=i, the given extent, and centroid coordinates inferred from the extent.
+Object (const Object &);     // copy an existing object.
+
+// destructor
+~Object ();
+
+// operators
+Object& operator=(const Object&); // copy an existing object.
+
+// operations
+std::vector<std::string> properties () const; // get a vector of names or keys for all of the object's properties.
+bool contains (const std::string& key) const; // return true if the object has a property called "key".
+double get (const std::string& key) const;    // get the value of the object's "key" property.
+void set (const std::string& key, double x);  // set the value of the object's "key" property to x.
+void clear (const std::string& key);          // remove the object's "key" property.
+void clear ();                                // remove all of the object's properties.
+```
+
 ### Raster
 
 Raster object for processing large files. Using these objects isn't fast and takes up space on your hard drive. Creates a copy of the file you plan to manipulate (or creates a new file for new rasters) and reads/writes blocks of data from/to it. If you run out of disk space, your program will have undefined behavior unless you have checks for file and grid data validity. Aborting the program early for any reason will prevent the destructor from being called, which destroys the temporary files -- these will need to be destroyed manually. Temporary raster files have names that begin with "_tmp_rast" and can be found at the directory indicated with the static temppath member, which can be retrieved or set (for ALL raster objects in the program) with the tempFileLoc method. I strongly recommend setting the temppath only once at the beginning of the program. The raster object currently only works for ENVI-format images with binary .dat files with the .hdr header files (https://www.l3harrisgeospatial.com/docs/enviheaderfiles.html, accessed 24 Jan 2023).
@@ -507,6 +537,39 @@ std::string getTempFilename () const; // get the name of the raster's temporary 
 ```
 
 ### Statistics
+
+Object to help handle monovariate statistical reductions. If determining the median and/or mode, values are truncated to integers and values are tracked in a map structure.
+
+```C++
+// constructors
+Statistics (bool cv=false);           // construct a new statistics object, which will count individual values (i.e., for median and mode determination) if cv=true.
+Statistics (const Statistics& stats); // copy an existing statistics object.
+
+// destructor
+~Statistics ();
+
+// operators
+Statistics& operator= (const Statistics& stats); // copy an existing statistics object.
+
+// operations
+void push (double x);                                     // sample the value x into the object's internal aggregate.
+template<typename T> void push (const std::vector<T>& x); // sammple all values x into the object's internal aggregate.
+void trackValues (bool);                                  // set to true to track individual values.
+bool trackValues () const;                                // return true if individual values are being tracked.
+int count () const;                                       // return the number of samples taken.
+double min () const;                                      // get the minimum value sampled.
+double max () const;                                      // get the maximum number sampled.
+double range () const;                                    // get the maximum-minimum difference.
+double sum () const;                                      // get the sum of sampled values.
+double sum2 () const;                                     // get the square of the sum of sampled values.
+double mean () const;                                     // get the mean of sampled values.
+double var () const;                                      // get the variance of sampled values.
+double stdev () const;                                    // get the standard devation of sampled values.
+double skew () const;                                     // get the skew of sampled values.
+double kurtosis () const;                                 // get the kurtosis of sampled values.
+double median () const;                                   // get the median of sampled values, for all values that were tracked.
+int mode () const;                                        // get the mode of sampled values, for all values that were tracked.
+```
 
 ## Operations
 
