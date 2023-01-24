@@ -7,7 +7,7 @@ These may depend on functions in my more general BYStdLib library. You may need 
 
 ## Contents
 
-Objects that the user is likely to directly interface with. Each of these objects is contained within a header file (.hpp) of the same name.
+Low-level objects that the user is likely to directly interface with. Each of these objects is contained within a header file (.hpp) of the same name.
 
 | Object | Description |
 | --- | --- |
