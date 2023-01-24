@@ -3,9 +3,28 @@ Brennan Young's GIS library (the parts of it I feel comfortable sharing, anyway)
 
 Yes, I put everything in the object's .hpp file. I get it, I'm doing in wrong, etc. etc., but linking .cpp and .hpp files gives me a headache, and I prefer to contain each object in one file.
 
+These may depend on functions in my more general BYStdLib library. You may need to muck with the pathing in each header file's #include statements.
+
 ## Contents
 
-Objects
+Objects that the user is likely to interface with:
+| Object | Description |
+| --- | --- |
+| [CompWindow](CompWindow) | Data structure for facilitating raster neighborhood operations. |
+| [Graph](Graph) | Data structure for handling relationships between objects within one set of IDs. May be directed or undirected, and may be a multigraph. |
+| [GridCell](GridCell) | Simple data structure containing a row, column, and band number, to facilitate communication of grid coordinates. |
+| [Object](Object) | Geographic object with a location, extent, and set of properties. |
+| [Raster](Raster) | Geographic object containing a rectangle-tesselated grid with a location, extent, and set of bands of diverse data types. |
+| [Statistics](Statistics) | Data structure for efficiently taking samples and reporting the distribution along one dimension. |
+
+Objects that the user is ***NOT*** likely to interface with:
+| Object | Description |
+| --- | --- |
+| [DataType](DataType) | Data structure for communicating data type: short, int, long, unsigned short, unsigned int, unsigned long, float, double, complex, long complex. |
+| [Extent](Extent) | Data structure for specifying the minimum and maximum x- and y-coordinates relevant to a geographic object. |
+| [FileInfo](FileInfo) | Data structure for holding and managing file information for raster data. |
+| [GeogInfo](GeogInfo) | Data structure for holding and managing geographic information for raster data. |
+| [GridBlock](GridBlock) | Data structure for holding and managing blocks of data from raster data files. |
 
 ## Objects
 
