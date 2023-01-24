@@ -1,5 +1,7 @@
 # BY-GIS
-Brennan Young's GIS library (the parts of it I feel comfortable sharing, anyway).
+Brennan Young's GIS library.
+
+Note that this is an incomplete representation of all of my data files. Some code has not yet reached maturation, and some code is being used in active research and I won't release research-critical code without the approval of my colleagues.
 
 Yes, I put everything in the object's .hpp file. I get it, I'm doing in wrong, etc. etc., but linking .cpp and .hpp files gives me a headache, and I prefer to contain each object in one file.
 
@@ -573,4 +575,4 @@ int mode () const;                                        // get the mode of sam
 
 ## Operations
 
-I'm not yet ready to make these public. I'm using these for my work, and I've been taught to be both paranoid and open with my code and data. This repository is my compromise between those two end-members.
+I'm not yet ready to make these public.
