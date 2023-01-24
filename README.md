@@ -7,7 +7,7 @@ These may depend on functions in my more general BYStdLib library. You may need 
 
 ## Contents
 
-Objects that the user is likely to interface with:
+Objects that the user is likely to directly interface with:
 | Object | Description |
 | --- | --- |
 | [CompWindow](CompWindow) | Data structure for facilitating raster neighborhood operations. |
@@ -17,7 +17,7 @@ Objects that the user is likely to interface with:
 | [Raster](Raster) | Geographic object containing a rectangle-tesselated grid with a location, extent, and set of bands of diverse data types. |
 | [Statistics](Statistics) | Data structure for efficiently taking samples and reporting the distribution along one dimension. |
 
-Objects that the user is ***NOT*** likely to interface with:
+Objects that the user is ***NOT*** likely to directly interface with:
 | Object | Description |
 | --- | --- |
 | [DataType](DataType) | Data structure for communicating data type: short, int, long, unsigned short, unsigned int, unsigned long, float, double, complex, long complex. |
@@ -25,6 +25,8 @@ Objects that the user is ***NOT*** likely to interface with:
 | [FileInfo](FileInfo) | Data structure for holding and managing file information for raster data. |
 | [GeogInfo](GeogInfo) | Data structure for holding and managing geographic information for raster data. |
 | [GridBlock](GridBlock) | Data structure for holding and managing blocks of data from raster data files. |
+
+I will make operation libraries available as I become comfortable sharing them.
 
 ## Objects
 
@@ -193,4 +195,4 @@ std::string getTempFilename () const; // get the name of the raster's temporary 
 
 ## Operations
 
-I'm not yet ready to make these public.
+I'm not yet ready to make these public. I'm using these for my work, and I've been taught to be both paranoid and open with my code and data. This repository is my compromise between those two end-members.
